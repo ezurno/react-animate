@@ -18,16 +18,19 @@ const Box = styled(motion.div)`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
+const BoxVarient = {
+  start: { scale: 0 },
+  end: {
+    scale: 1,
+    rotateZ: 360,
+    transition: { type: "spring", damping: 10, delay: 0.5 },
+  },
+};
+
 function App() {
   return (
     <Wrapper>
-      <Box
-        transition={{ type: "spring", damping: 10, delay: 0.5 }}
-        // defalut type은 spring, dampling 은 물리 저항력, 0은 저항이 없어서 계속 반복함
-        // mass 는 무게, bounce는 튕기는 양
-        initial={{ scale: 0 }}
-        animate={{ scale: 1, rotateZ: 360 }}
-      />
+      <Box variants={BoxVarient} initial="start" animate="end" />
     </Wrapper>
   );
 }
