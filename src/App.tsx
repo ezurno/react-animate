@@ -1,10 +1,17 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
-import { Variants, motion, useMotionValue, useTransform } from "framer-motion";
+import {
+  Variants,
+  motion,
+  useMotionValue,
+  useTransform,
+  useViewportScroll,
+  useScroll,
+} from "framer-motion";
 
 const Wrapper = styled(motion.div)`
-  height: 100vh;
-  width: 100vw;
+  height: 200vh;
+  width: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,12 +57,21 @@ function App() {
     ]
   );
 
+  const { scrollY, scrollYProgress } = useScroll();
+  useEffect(() => {
+    scrollY.onChange(() => {
+      console.log(scrollY.get(), scrollYProgress.get()); // scrollY 와 scrollYProcss의 값은 각각 pixel, main % 값임
+    });
+  }, [scrollY, scrollYProgress]);
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 5]);
+
   return (
     <Wrapper ref={wrapperRef} style={{ background: gradient }}>
       <Box
         drag="x"
         dragSnapToOrigin
-        style={{ x, rotateZ }}
+        style={{ x, rotateZ, scale }}
         dragConstraints={wrapperRef}
       />
     </Wrapper>
