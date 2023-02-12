@@ -1,13 +1,15 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import { Variants, motion } from "framer-motion";
+import { Variants, motion, useMotionValue, useTransform } from "framer-motion";
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(135deg, #e09, #d0e);
+  overflow: hidden;
 `;
 
 const Box = styled(motion.div)`
@@ -35,21 +37,27 @@ const BoxVarient: Variants = {
 };
 
 function App() {
-  const biggerBoxRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0); // animation의 state와 velocity를 추적함 => react에서 자동으로 rerendering 하지 않게 block함
+  const rotateZ = useTransform(x, [-800, 0, 800], [-360, 0, 360]); // useTransfom 은 한 값을 구간을 나눠 값을 자동 치환 해줌
+  const gradient = useTransform(
+    x,
+    [-800, 0, 800],
+    [
+      "linear-gradient(135deg, #1800ee, #00a3ee)",
+      "linear-gradient(135deg, #e09, #d0e)",
+      "linear-gradient(135deg, #2cee00, #beee00)",
+    ]
+  );
+
   return (
-    <Wrapper>
-      <BiggerBox ref={biggerBoxRef}>
-        <Box
-          drag
-          // dragConstraints={{ top: 0, bottom: 0, left: 0, right: 0 }} 일반적인 방식
-          dragElastic={0} // default Value = 0.5 drag 시 탄성 조절
-          dragConstraints={biggerBoxRef} // dragBox 의 틀을 설정 useRef로 지정
-          dragSnapToOrigin={false} // drag가 끝날 시 원점으로 돌아가는지
-          variants={BoxVarient}
-          whileHover="hover"
-          whileTap="click"
-        />
-      </BiggerBox>
+    <Wrapper ref={wrapperRef} style={{ background: gradient }}>
+      <Box
+        drag="x"
+        dragSnapToOrigin
+        style={{ x, rotateZ }}
+        dragConstraints={wrapperRef}
+      />
     </Wrapper>
   );
 }
