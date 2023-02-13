@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import {
   Variants,
@@ -7,13 +7,15 @@ import {
   useTransform,
   useViewportScroll,
   useScroll,
+  AnimatePresence,
 } from "framer-motion";
 
 const Wrapper = styled(motion.div)`
   height: 100vh;
   width: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   background: linear-gradient(135deg, #e09, #d0e);
   overflow: hidden;
@@ -25,6 +27,8 @@ const Box = styled(motion.div)`
   background-color: rgba(255, 255, 255, 1);
   border-radius: 25px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+  position: absolute;
+  top: 100px;
 `;
 
 const BiggerBox = styled.div`
@@ -39,52 +43,40 @@ const BiggerBox = styled.div`
 `;
 
 const BoxVarient: Variants = {
-  hover: { rotateZ: 90 },
-  click: { borderRadius: "100px" },
-};
-
-const Svg = styled.svg`
-  width: 300px;
-  height: 300px;
-  path {
-    stroke: white; // 겉 테두리만
-    stroke-width: 2; // 테두리 크기
-  }
-`;
-
-const SvgVarient: Variants = {
-  start: {
-    pathLength: 0,
-    fill: "rgba(255,255,255,0)",
+  initial: {
+    opacity: 0,
+    scale: 0,
   },
-  end: {
-    fill: "rgba(255,255,255,1)",
-    pathLength: 1,
+  animate: {
+    opacity: 1,
+    scale: 1,
+    rotateZ: 360,
+  },
+  exit: {
+    opacity: 0,
+    y: 60,
   },
 };
 
 function App() {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+  const onClick = () => {
+    setVisible((current) => !current);
+  };
 
   return (
-    <Wrapper ref={wrapperRef}>
-      <Svg
-        focusable="false"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 448 512"
-      >
-        <motion.path // path를 motion.path로 수정해 주어야 animate 사용 가능
-          variants={SvgVarient}
-          initial="start"
-          animate="end"
-          transition={{
-            // transition을 밖에다 주어 default로 기본값을 부여, 따로 fill을 transition 부여
-            default: { duration: 5 },
-            fill: { duration: 1, delay: 3 },
-          }}
-          d="M224 373.12c-25.24-31.67-40.08-59.43-45-83.18-22.55-88 112.61-88 90.06 0-5.45 24.25-20.29 52-45 83.18zm138.15 73.23c-42.06 18.31-83.67-10.88-119.3-50.47 103.9-130.07 46.11-200-18.85-200-54.92 0-85.16 46.51-73.28 100.5 6.93 29.19 25.23 62.39 54.43 99.5-32.53 36.05-60.55 52.69-85.15 54.92-50 7.43-89.11-41.06-71.3-91.09 15.1-39.16 111.72-231.18 115.87-241.56 15.75-30.07 25.56-57.4 59.38-57.4 32.34 0 43.4 25.94 60.37 59.87 36 70.62 89.35 177.48 114.84 239.09 13.17 33.07-1.37 71.29-37.01 86.64zm47-136.12C280.27 35.93 273.13 32 224 32c-45.52 0-64.87 31.67-84.66 72.79C33.18 317.1 22.89 347.19 22 349.81-3.22 419.14 48.74 480 111.63 480c21.71 0 60.61-6.06 112.37-62.4 58.68 63.78 101.26 62.4 112.37 62.4 62.89.05 114.85-60.86 89.61-130.19.02-3.89-16.82-38.9-16.82-39.58z"
-        />
-      </Svg>
+    <Wrapper>
+      <AnimatePresence>
+        {visible ? (
+          <Box
+            variants={BoxVarient}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          />
+        ) : null}
+      </AnimatePresence>
+      <button onClick={onClick}>Click this</button>
     </Wrapper>
   );
 }
