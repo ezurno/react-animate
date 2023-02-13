@@ -29,6 +29,10 @@ const Box = styled(motion.div)`
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
   position: absolute;
   top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
 `;
 
 const BiggerBox = styled.div`
@@ -46,37 +50,52 @@ const BoxVarient: Variants = {
   initial: {
     opacity: 0,
     scale: 0,
+    x: 300,
   },
+
   animate: {
-    opacity: 1,
+    x: 0,
     scale: 1,
-    rotateZ: 360,
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
   },
+
   exit: {
+    x: -300,
+    scale: 0,
     opacity: 0,
-    y: 60,
+    transition: {
+      duration: 1,
+    },
   },
 };
 
 function App() {
-  const [visible, setVisible] = useState(false);
-  const onClick = () => {
-    setVisible((current) => !current);
+  const [pageNumber, setPageNumber] = useState(1);
+  const onNext = () => {
+    setPageNumber((page) => (page === 10 ? 10 : page + 1));
   };
 
   return (
     <Wrapper>
       <AnimatePresence>
-        {visible ? (
-          <Box
-            variants={BoxVarient}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-          />
-        ) : null}
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((page) =>
+          page === pageNumber ? (
+            <Box
+              variants={BoxVarient}
+              initial="initial"
+              exit="exit"
+              animate="animate"
+              key={page}
+            >
+              {page}
+            </Box>
+          ) : null
+        )}
       </AnimatePresence>
-      <button onClick={onClick}>Click this</button>
+      <button onClick={onNext}>Next</button>
     </Wrapper>
   );
 }
