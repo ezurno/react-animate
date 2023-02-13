@@ -15,8 +15,8 @@ const Wrapper = styled(motion.div)`
   width: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
+  justify-content: center;
   background: linear-gradient(135deg, #e09, #d0e);
   overflow: hidden;
 `;
@@ -47,11 +47,11 @@ const BiggerBox = styled.div`
 `;
 
 const BoxVarient: Variants = {
-  initial: {
+  initial: (back: Boolean) => ({
     opacity: 0,
     scale: 0,
-    x: 300,
-  },
+    x: back ? -300 : 300,
+  }),
 
   animate: {
     x: 0,
@@ -62,40 +62,46 @@ const BoxVarient: Variants = {
     },
   },
 
-  exit: {
-    x: -300,
+  exit: (back: Boolean) => ({
+    x: back ? 300 : -300,
     scale: 0,
     opacity: 0,
     transition: {
       duration: 1,
     },
-  },
+  }),
 };
 
 function App() {
   const [pageNumber, setPageNumber] = useState(1);
-  const onNext = () => {
+  const [back, setBack] = useState(false);
+
+  const onNext = async () => {
+    await setBack(false);
     setPageNumber((page) => (page === 10 ? 10 : page + 1));
+  };
+  const onPrev = async () => {
+    await setBack(true);
+    // code 엔 영향을 주지 않지만 set이 실행 되기 전에 setPageNumber가 먼저 실행 되어 방향이 뒤틀리게 됨 => 비동기식 처리로 해결
+    setPageNumber((page) => (page === 1 ? 1 : page - 1));
   };
 
   return (
     <Wrapper>
-      <AnimatePresence>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((page) =>
-          page === pageNumber ? (
-            <Box
-              variants={BoxVarient}
-              initial="initial"
-              exit="exit"
-              animate="animate"
-              key={page}
-            >
-              {page}
-            </Box>
-          ) : null
-        )}
+      <AnimatePresence custom={back}>
+        <Box
+          custom={back}
+          variants={BoxVarient}
+          initial="initial"
+          exit="exit"
+          animate="animate"
+          key={pageNumber}
+        >
+          {pageNumber}
+        </Box>
       </AnimatePresence>
       <button onClick={onNext}>Next</button>
+      <button onClick={onPrev}>Prev</button>
     </Wrapper>
   );
 }
