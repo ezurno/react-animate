@@ -8,21 +8,20 @@ import {
   useViewportScroll,
   useScroll,
   AnimatePresence,
+  animate,
 } from "framer-motion";
 
 const Wrapper = styled(motion.div)`
   height: 100vh;
-  width: auto;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-around;
   background: linear-gradient(135deg, #e09, #d0e);
   overflow: hidden;
-  gap: 50px;
 `;
 
 const Box = styled(motion.div)`
-  width: 200px;
   height: 200px;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 25px;
@@ -34,23 +33,53 @@ const Box = styled(motion.div)`
   font-size: 28px;
 `;
 
-const Circle = styled(motion.div)`
-  width: 50px;
-  height: 50px;
-  border-radius: 25px;
-  background-color: rgba(35, 103, 221, 0.8);
+const Grid = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 50vw;
+  gap: 10px;
+
+  div:first-child,
+  div:last-child {
+    grid-column: span 2;
+  }
+`;
+
+const Overlay = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
 `;
 
 function App() {
-  const [touch, setTouch] = useState(false);
+  const [clicked, setClicked] = useState(false);
+
   const onClick = () => {
-    setTouch((current) => !current);
+    setClicked((current) => !current);
   };
 
   return (
     <Wrapper onClick={onClick}>
-      <Box>{touch ? <Circle layoutId="blueBall" /> : null}</Box>
-      <Box>{touch ? null : <Circle layoutId="blueBall" />}</Box>
+      <Grid>
+        <Box layoutId="hello" />
+        <Box />
+        <Box />
+        <Box />
+      </Grid>
+      <AnimatePresence>
+        {clicked ? (
+          <Overlay
+            initial={{ backgroundColor: "rgba(0, 0, 0, 0)" }}
+            animate={{ backgroundColor: "rgba(0, 0, 0,0.5)" }}
+            exit={{ backgroundColor: "rgba(0, 0, 0, 0)" }}
+          >
+            <Box layoutId="hello" style={{ width: 400 }} />
+          </Overlay>
+        ) : null}
+      </AnimatePresence>
     </Wrapper>
   );
 }
