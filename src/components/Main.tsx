@@ -24,6 +24,7 @@ const Word = styled(motion.div)`
   font-size: 120px;
   z-index: 100;
   cursor: pointer;
+  color: rgba(0, 0, 0, 0.6); ;
 `;
 
 const tagVarient: Variants = {

@@ -22,57 +22,37 @@ const tagVarient: Variants = {
   },
 };
 
-const Rect = styled(motion.div)`
-  width: 320px;
-  height: 320px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+const ScrollBox = styled(motion.div)`
+  width: 480px;
+  height: 480px;
   background-color: rgba(0, 0, 0, 0.2);
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
+  overflow-y: scroll;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const MiniBox = styled(motion.div)`
-  width: 150px;
-  height: 150px;
-  border-radius: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
   background-color: white;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
     rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 `;
 
-// const ballVarient: Variants = {
-//   click: {
-//     backgroundColor: "#000000",
-//     transition: {
-//       duration: 1,
-//     },
-//   },
-// };
-
-function Box() {
-  const boxRef = useRef<HTMLDivElement>(null);
+function Scroll() {
   return (
     <Wrapper variants={tagVarient} initial="start" animate="end">
-      <Rect ref={boxRef}>
-        <MiniBox
-          drag
-          dragConstraints={boxRef}
-          dragElastic={0.2}
-          dragSnapToOrigin
-          whileTap={{
-            borderRadius: "75px",
-            backgroundColor: "rgba(255,255,255,0.6)",
-          }}
-        />
-      </Rect>
+      <ScrollBox>
+        <MiniBox />
+      </ScrollBox>
     </Wrapper>
   );
 }
 
-export default Box;
+export default Scroll;

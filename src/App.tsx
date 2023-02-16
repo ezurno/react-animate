@@ -7,6 +7,8 @@ import Main from "./components/Main";
 import Logo from "./components/Logo";
 import Header from "./Header";
 import Box from "./components/Box";
+import Scroll from "./components/Scroll";
+import Drag from "./components/Drag";
 
 const Wrapper = styled(motion.div)`
   width: 100vw;
@@ -31,6 +33,10 @@ function App() {
         <Logo />
       ) : viewer === 2 ? (
         <Box />
+      ) : viewer === 3 ? (
+        <Scroll />
+      ) : viewer === 5 ? (
+        <Drag />
       ) : null}
     </Wrapper>
   );

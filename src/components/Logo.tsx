@@ -14,8 +14,8 @@ const Svg = styled.svg`
   width: 300px;
   height: 300px;
   path {
-    stroke: black;
-    stroke-width: 2;
+    stroke: rgba(0, 0, 0, 0.6);
+    stroke-width: 3;
   }
 `;
 
@@ -25,7 +25,7 @@ const SvgVarient: Variants = {
     fill: "rgba(0,0,0,0)",
   },
   end: {
-    fill: "rgba(0,0,0,1)",
+    fill: "rgba(0,0,0,0.8)",
     pathLength: 1,
   },
 };
