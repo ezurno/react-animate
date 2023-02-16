@@ -10,6 +10,8 @@ import Box from "./components/Box";
 import Scroll from "./components/Scroll";
 import Drag from "./components/Drag";
 import Slider from "./components/Slider";
+import Footer from "./Footer";
+import Overlay from "./components/Overlay";
 
 const Wrapper = styled(motion.div)`
   width: 100vw;
@@ -27,7 +29,7 @@ function App() {
 
   return (
     <Wrapper>
-      <Header></Header>
+      <Header />
       {viewer === 0 ? (
         <Main />
       ) : viewer === 1 ? (
@@ -35,12 +37,13 @@ function App() {
       ) : viewer === 2 ? (
         <Box />
       ) : viewer === 3 ? (
-        <Scroll />
-      ) : viewer === 4 ? (
         <Slider />
-      ) : viewer === 5 ? (
+      ) : viewer === 4 ? (
         <Drag />
+      ) : viewer === 5 ? (
+        <Overlay />
       ) : null}
+      <Footer />
     </Wrapper>
   );
 }

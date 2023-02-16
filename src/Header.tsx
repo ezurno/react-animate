@@ -6,10 +6,10 @@ import { navState } from "./Atoms";
 
 const Nav = styled(motion.ul)`
   width: 70%;
-  height: 20%;
+  height: 30%;
 
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   justify-content: center;
   align-items: center;
   user-select: none;
@@ -64,7 +64,7 @@ function Header() {
   return (
     <AnimatePresence>
       <Nav>
-        {["MAIN", "LOGO", "BOX", "SCROLL", "SLIDER", "DRAG", "OVERLAY"].map(
+        {["MAIN", "LOGO", "BOX", "SLIDER", "DRAG", "OVERLAY"].map(
           (nav, index) => (
             <NavList
               variants={NavVarient}

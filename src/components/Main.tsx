@@ -8,7 +8,6 @@ const Wrapper = styled(motion.div)`
   align-items: center;
   height: 80%;
   width: 100%;
-  padding: 50px;
   overflow: hidden;
   h1 {
     font-size: 120px;

@@ -26,9 +26,10 @@ const tagVarient: Variants = {
 const Box = styled(motion.div)`
   width: 200px;
   height: 200px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
   border-radius: 25px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 20px 40px rgba(0, 0, 0, 0.297);
   top: 100px;
   display: flex;
   align-items: center;
@@ -64,6 +65,7 @@ const Arrow = styled(motion.span)`
   cursor: pointer;
   padding: 0 30px;
   user-select: none;
+  color: rgba(0, 0, 0, 0.61);
 `;
 
 function Slider() {

@@ -50,9 +50,9 @@ function Drag() {
     x,
     [-800, 0, 800],
     [
-      "linear-gradient(135deg, #1800ee, #00a3ee)",
-      "linear-gradient(135deg, #e09, #d0e)",
-      "linear-gradient(135deg, #2cee00, #beee00)",
+      "linear-gradient(135deg, rgba(0, 0, 0, 0.079),rgba(0, 0, 0, 0.71))",
+      "linear-gradient(135deg, rgba(0, 0, 0, 0.807), rgba(0, 0, 0, 0.719))",
+      "linear-gradient(135deg, rgba(0, 0, 0, 0.773), rgba(0, 0, 0, 0.066))",
     ]
   );
   return (
