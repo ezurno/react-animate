@@ -6,7 +6,6 @@ const Wrapper = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
   height: 80%;
   width: 100%;
 `;
@@ -15,7 +14,7 @@ const Svg = styled.svg`
   width: 300px;
   height: 300px;
   path {
-    stroke: white;
+    stroke: black;
     stroke-width: 2;
   }
 `;
@@ -23,10 +22,10 @@ const Svg = styled.svg`
 const SvgVarient: Variants = {
   start: {
     pathLength: 0,
-    fill: "rgba(255,255,255,0)",
+    fill: "rgba(0,0,0,0)",
   },
   end: {
-    fill: "rgba(255,255,255,1)",
+    fill: "rgba(0,0,0,1)",
     pathLength: 1,
   },
 };

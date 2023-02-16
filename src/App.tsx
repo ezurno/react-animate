@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { navState } from "./Atoms";
-import Box from "./components/Box";
+import Main from "./components/Main";
 import Logo from "./components/Logo";
 import Header from "./Header";
 
@@ -24,7 +24,7 @@ function App() {
   return (
     <Wrapper>
       <Header></Header>
-      {viewer === 0 ? <Logo /> : viewer === 1 ? <Box /> : null}
+      {viewer === 0 ? <Main /> : viewer === 1 ? <Logo /> : null}
     </Wrapper>
   );
 }
