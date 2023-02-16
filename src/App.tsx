@@ -6,6 +6,7 @@ import { navState } from "./Atoms";
 import Main from "./components/Main";
 import Logo from "./components/Logo";
 import Header from "./Header";
+import Box from "./components/Box";
 
 const Wrapper = styled(motion.div)`
   width: 100vw;
@@ -24,7 +25,13 @@ function App() {
   return (
     <Wrapper>
       <Header></Header>
-      {viewer === 0 ? <Main /> : viewer === 1 ? <Logo /> : null}
+      {viewer === 0 ? (
+        <Main />
+      ) : viewer === 1 ? (
+        <Logo />
+      ) : viewer === 2 ? (
+        <Box />
+      ) : null}
     </Wrapper>
   );
 }

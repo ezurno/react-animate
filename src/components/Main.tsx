@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { useRef } from "react";
 import styled from "styled-components";
 
@@ -26,10 +26,27 @@ const Word = styled(motion.div)`
   cursor: pointer;
 `;
 
+const tagVarient: Variants = {
+  start: {
+    opacity: 0,
+  },
+  end: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
 export function Main() {
   const dragEndRef = useRef<HTMLDivElement>(null);
   return (
-    <Wrapper ref={dragEndRef}>
+    <Wrapper
+      ref={dragEndRef}
+      variants={tagVarient}
+      initial="start"
+      animate="end"
+    >
       {["D", "R", "A", "G"].map((word, index) => (
         <Word
           key={index}
