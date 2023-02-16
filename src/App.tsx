@@ -1,6 +1,8 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { navState } from "./Atoms";
 import Box from "./components/Box";
 import Logo from "./components/Logo";
 import Header from "./Header";
@@ -17,13 +19,7 @@ const Wrapper = styled(motion.div)`
 `;
 
 function App() {
-  const [navIndex, setNavIndex] = useState<null | number>(null);
-  const [viewer, setViewer] = useState(0);
-
-  const onNavClick = (index: number) => {
-    setNavIndex(index);
-    console.log(index);
-  };
+  const [viewer, setViewer] = useRecoilState(navState);
 
   return (
     <Wrapper>

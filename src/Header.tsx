@@ -1,6 +1,8 @@
 import { AnimatePresence, motion, Variants } from "framer-motion";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { navState } from "./Atoms";
 
 const Nav = styled(motion.ul)`
   width: 70%;
@@ -53,9 +55,10 @@ const NavVarient: Variants = {
 };
 
 function Header() {
-  const [navIndex, setNavIndex] = useState<null | number>(null);
+  const [viewer, setViewer] = useRecoilState(navState);
+
   const onNavClick = (index: number) => {
-    setNavIndex(index);
+    setViewer(index);
     console.log(index);
   };
   return (
