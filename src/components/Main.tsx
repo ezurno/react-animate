@@ -14,6 +14,7 @@ const Wrapper = styled(motion.div)`
     position: absolute;
     user-select: none;
     opacity: 0.3;
+    font-family: "Oswald", sans-serif;
   }
 `;
 
@@ -23,7 +24,8 @@ const Word = styled(motion.div)`
   font-size: 120px;
   z-index: 100;
   cursor: pointer;
-  color: rgba(0, 0, 0, 0.6); ;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: "Oswald", sans-serif;
 `;
 
 const tagVarient: Variants = {
