@@ -1,46 +1,157 @@
-# Getting Started with Create React App
+# ✨ **React-Animate 프로젝트** ✨
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[React-Animate](https://ezurno.github.io/react-animate/)
 
-## Available Scripts
+React의 라이브러리를 활용한 애니메이션
 
-In the project directory, you can run:
+<br/>
 
-### `npm start`
+## 사용한 기술 🛠️
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- styled-component
+- react-icons
+- framer-motion
+- Recoil
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br/>
+<hr/>
 
-### `npm test`
+> ## **MAIN**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br/>
+<br/>
+<img src ="md_resources\resource_1.png" height="200"/>
+<img src ="md_resources\resource_2.png" height="200"/>
+<img src ="md_resources\resource_17.png" height="200"/>
+<br/>
+<br/>
 
-### `npm run build`
+- 메인화면의 **DRAG** 를 drag 시 글자가 흩어지는 애니메이션
+- 글자를 계속 누르고 있으면 뱅글뱅글 돌아감
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br/>
+<hr/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> ## **LOGO**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br/>
+<br/>
+<img src ="md_resources\resource_4.png" height="200"/>
+<img src ="md_resources\resource_3.png" height="200"/>
+<img src ="md_resources\resource_5.png" height="200"/>
+<br/>
+<br/>
 
-### `npm run eject`
+- **SVG** 의 **varients**를 조절해 로고가 그려지는 애니메이션
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<br/>
+<hr/>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+> ## **BOX**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br/>
+<br/>
+<img src ="md_resources\resource_6.png" height="200"/>
+<img src ="md_resources\resource_7.png" height="200"/>
+<br/>
+<br/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- BOX 내에 있는 블럭을 이동 시킬 때 밖으로 나오지 못함
+- 드래그 시 모양이 바뀌며 드래그 종료 시 다시 돌아감 **dragSnapOrigin**
 
-## Learn More
+<br/>
+<hr/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> ## **SLIDER**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br/>
+<br/>
+<img src ="md_resources\resource_8.png" height="200"/>
+<img src ="md_resources\resource_9.png" height="200"/>
+<img src ="md_resources\resource_10.png" height="200"/>
+<img src ="md_resources\resource_11.png" height="200"/>
+<br/>
+<br/>
+
+- 버튼을 클릭하면 점차 사라지며 우측에서 다음 **BOX** 가 나오는 애니메이션
+- 양방향으로도 애니메이션이 작동 함
+
+<br/>
+<hr/>
+
+> ## **DRAG**
+
+<br/>
+<br/>
+
+<img src ="md_resources\resource_12.png" height="180"/>
+<img src ="md_resources\resource_14.png" height="180"/>
+<img src ="md_resources\resource_13.png" height="180"/>
+
+<br/>
+<br/>
+
+- 가운데의 **BOX**를 움직이면 뒷 배경 색이 바뀌는 애니메이션
+- **dragSnapOrigin** 으로 인해 드래그 종료 시 원점으로 돌아감
+
+<br/>
+<hr/>
+
+> ## **OVERLAY**
+
+<br/>
+<br/>
+
+<img src ="md_resources\resource_15.png" height="200"/>
+<img src ="md_resources\resource_16.png" height="200"/>
+<br/>
+<br/>
+
+- **id**를 지정한 **BOX**가 **overlay** 되는 애니메이션
+
+<br/>
+<hr/>
+
+> ## **그 외**
+
+<br/>
+<br/>
+<img src ="md_resources\resource_18.png" height="100"/>
+
+<br/>
+<br/>
+
+- **hover** 시 애니메이션을 줌
+- **Recoil** 을 활용해 네비게이션 바를 누르면 특정 **components**가 나오게 만듦
+- **react-router-v6** 로 **navigatior** 사용 할 예정
+
+<br/>
+
+```ts
+import { atom } from "recoil";
+
+export const navState = atom<number>({
+  key: "navState",
+  default: 0,
+});
+//////////////////////////
+<Wrapper>
+  <Header />
+  {viewer === 0 ? (
+    <Main />
+  ) : viewer === 1 ? (
+    <Logo />
+  ) : viewer === 2 ? (
+    <Box />
+  ) : viewer === 3 ? (
+    <Slider />
+  ) : viewer === 4 ? (
+    <Drag />
+  ) : viewer === 5 ? (
+    <Overlay />
+  ) : null}
+  <Footer />
+</Wrapper>;
+```
+
+<br/>
