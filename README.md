@@ -20,9 +20,11 @@ React의 라이브러리를 활용한 애니메이션
 
 <br/>
 <br/>
-<img src ="md_resources\resource_1.png" height="200"/>
-<img src ="md_resources\resource_2.png" height="200"/>
-<img src ="md_resources\resource_17.png" height="200"/>
+<p align="center">
+<img src ="md_resources\resource_1.png" height="150"/>
+<img src ="md_resources\resource_2.png" height="150"/>
+<img src ="md_resources\resource_17.png" height="150"/>
+</p>
 <br/>
 <br/>
 
@@ -36,9 +38,11 @@ React의 라이브러리를 활용한 애니메이션
 
 <br/>
 <br/>
-<img src ="md_resources\resource_4.png" height="200"/>
-<img src ="md_resources\resource_3.png" height="200"/>
-<img src ="md_resources\resource_5.png" height="200"/>
+<p align="center">
+<img src ="md_resources\resource_4.png" height="150"/>
+<img src ="md_resources\resource_3.png" height="150"/>
+<img src ="md_resources\resource_5.png" height="150"/>
+</p>
 <br/>
 <br/>
 
@@ -51,8 +55,10 @@ React의 라이브러리를 활용한 애니메이션
 
 <br/>
 <br/>
+<p align="center">
 <img src ="md_resources\resource_6.png" height="200"/>
 <img src ="md_resources\resource_7.png" height="200"/>
+</p>
 <br/>
 <br/>
 
@@ -66,10 +72,12 @@ React의 라이브러리를 활용한 애니메이션
 
 <br/>
 <br/>
+<p align="center">
 <img src ="md_resources\resource_8.png" height="200"/>
 <img src ="md_resources\resource_9.png" height="200"/>
 <img src ="md_resources\resource_10.png" height="200"/>
 <img src ="md_resources\resource_11.png" height="200"/>
+</p>
 <br/>
 <br/>
 
@@ -84,9 +92,11 @@ React의 라이브러리를 활용한 애니메이션
 <br/>
 <br/>
 
+<p align="center">
 <img src ="md_resources\resource_12.png" height="180"/>
 <img src ="md_resources\resource_14.png" height="180"/>
 <img src ="md_resources\resource_13.png" height="180"/>
+</p>
 
 <br/>
 <br/>
@@ -102,8 +112,10 @@ React의 라이브러리를 활용한 애니메이션
 <br/>
 <br/>
 
+<p align="center">
 <img src ="md_resources\resource_15.png" height="200"/>
 <img src ="md_resources\resource_16.png" height="200"/>
+<p/>
 <br/>
 <br/>
 
