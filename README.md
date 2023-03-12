@@ -73,10 +73,10 @@ React의 라이브러리를 활용한 애니메이션
 <br/>
 <br/>
 <p align="center">
-<img src ="md_resources\resource_8.png" height="200"/>
-<img src ="md_resources\resource_9.png" height="200"/>
-<img src ="md_resources\resource_10.png" height="200"/>
-<img src ="md_resources\resource_11.png" height="200"/>
+<img src ="md_resources\resource_8.png" height="120"/>
+<img src ="md_resources\resource_9.png" height="120"/>
+<img src ="md_resources\resource_10.png" height="120"/>
+<img src ="md_resources\resource_11.png" height="120"/>
 </p>
 <br/>
 <br/>
